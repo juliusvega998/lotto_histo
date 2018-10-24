@@ -39,6 +39,8 @@ def cmpNumbers():
 
     for lotto in lottos:
         for number in numbers:
+            if number == '__-__-__-__-__-__':
+                continue
             if lotto == number:
                 numbers.remove(number)
                 break
@@ -49,7 +51,7 @@ def cmpNumbers():
 def main():
     now = datetime.datetime.now()
     day = int(now.strftime('%w'))
-    if day == 1 or day == 2 or day == 6:
+    if day == 1 or day == 3 or day == 6:
         cmpNumbers()
 
 main()
