@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import httplib2
 import datetime
-FILE_PATH='D:/Documents/codes/python/lotto_histo/lotto.txt'
+FILE_PATH='D:/Google Drive/Dox/lotto.txt'
 
 def getHTML(url):
     http = httplib2.Http()
@@ -29,6 +29,7 @@ def getLotto():
     return lotto_numbers
 
 def appendLotto(numbers):
+    print("Appending lotto number ", numbers)
     lotto = open(FILE_PATH, 'a')
     for number in numbers:
         lotto.write('\n' + number)
@@ -51,7 +52,10 @@ def cmpNumbers():
 def main():
     now = datetime.datetime.now()
     day = int(now.strftime('%w'))
-    if day == 1 or day == 3 or day == 6:
+    if day == 1 or day == 3 or day == 7:
+        print("Retrieving Lotto number now...")
         cmpNumbers()
+    else:
+        print("No lotto draw today. CLosing the program.")
 
 main()
